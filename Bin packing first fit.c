@@ -1,0 +1,50 @@
+Aim:To implement the **First Fit Bin Packing** strategy for the **Bin Packing Problem**,
+    in order to efficiently assign items into bins while minimizing the number of bins used.
+
+Program :
+#include <stdio.h>
+
+ void firstFit(int items[], int n, int capacity)
+ {
+ int bin[n]; // Available capacity of bins
+ int binCount = 0; // Number of bins used / active bins
+
+ // Initialize all bins with full capacity
+ for (int i = 0; i < n; i++)
+ bin[i] = capacity;
+
+ // Process each item
+ for (int i = 0; i < n; i++)
+ {
+ int placed = 0; // flag to check if item is placed
+
+ // Check existing bins
+ for (int j = 0; j < binCount; j++)
+ {
+ // items fits in the current bin
+ if (bin[j] >= items[i])
+ {
+ bin[j] -= items[i]; // Reduce bin capacity by item size
+ printf("Item %d with weight %d placed in Bin %d\n", i+1,
+ items[i], j + 1);
+ placed = 1;
+ break; // First Fit: stop at first match
+ }
+ }
+
+ // Create new bin if item is not fitted in any existing bin
+ if (!placed)
+ {
+ bin[binCount] -= items[i];
+ printf("Item %d with weight %d placed in Bin %d\n", i+1, items[i],
+ binCount + 1);
+ binCount++;
+ }
+ }
+
+ printf("Total bins used = %d\n", binCount);
+ }
+
+ int main()
+ {
+ int n, capacity;
