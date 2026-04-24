@@ -37,4 +37,10 @@ Program :
  /* Logic Fix: If n is 1, the nth term is 'a' (0).
  Otherwise, the nth term is 'b'.
  */
- if (n == 1)
+  (n == 1)
+  printf("\nFibonacci term %d = %d\n", n, a);
+  else
+  printf("\nFibonacci term %d = %d\n", n, b);
+
+  return 0;
+  }
