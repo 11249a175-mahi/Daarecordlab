@@ -48,3 +48,33 @@ Program :
  int main()
  {
  int n, capacity;
+printf("Enter number of items: ");
+ scanf("%d", &n);
+
+ printf("Enter bin capacity: ");
+ scanf("%d", &capacity);
+ int items[n];
+
+ printf("Enter item sizes:\n");
+ for (int i = 0; i < n; i++)
+ {
+ int itemSize;
+ printf("Item %d: ", i + 1);
+ scanf("%d", &itemSize);
+
+ if (itemSize <= capacity)
+ {
+ items[i] = itemSize;
+ }
+ else
+ {
+ printf("Item size exceeds bin capacity. Please enter a valid
+size.\n");
+i--;
+ }
+ }
+
+ firstFit(items, n, capacity);
+
+ return 0;
+ }
